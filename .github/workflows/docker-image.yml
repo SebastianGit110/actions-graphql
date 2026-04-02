@@ -20,7 +20,7 @@ jobs:
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
-      RUN: |
+      run: |
         echo "Iniciando Login"
         docker login -u $DOCKER_USER -p ${{SECRETS.DOCKER_PASSWORD}}
         echo "Finalizando Login"
