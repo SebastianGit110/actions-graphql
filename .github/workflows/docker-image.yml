@@ -27,17 +27,19 @@ jobs:
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
-        NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
         echo "Iniciando Login"
         docker login -u $DOCKER_USER -p ${{secrets.DOCKER_PASSWORD}}
         echo "Finalizando Login"
-        echo "NEW_VERSION $NEW_VERSION !!!!"
-    # - name: Build Docker Image
-    #   run: |
-    #     docker build -t sebratdocker/cron-ticker:graphql2 .
-    # - name: Push Docker Image
-    #   run: |
-    #     docker push sebratdocker/cron-ticker:graphql2
-    #     docker image tag sebratdocker/cron-ticker:graphql2 sebratdocker/cron-ticker:latest
-    #     docker push sebratdocker/cron-ticker:latest
+    - name: Build Docker Image
+      env:
+        NEW_VERSION: ${{steps.version.outputs.version}}
+      run: |
+        docker build -t sebratdocker/cron-ticker:$NEW_VERSION .
+    - name: Push Docker Image
+      env:
+        NEW_VERSION: ${{steps.version.outputs.version}}
+      run: |
+        docker push sebratdocker/cron-ticker:$NEW_VERSION
+        docker image tag sebratdocker/cron-ticker:$NEW_VERSION sebratdocker/cron-ticker:latest
+        docker push sebratdocker/cron-ticker:latest
