@@ -32,7 +32,7 @@ jobs:
         echo "Iniciando Login"
         docker login -u $DOCKER_USER -p ${{secrets.DOCKER_PASSWORD}}
         echo "Finalizando Login"
-        echo "NEW_VERSION $NEW_VERSION !!!"
+        echo "NEW_VERSION $NEW_VERSION !!!!"
     # - name: Build Docker Image
     #   run: |
     #     docker build -t sebratdocker/cron-ticker:graphql2 .
