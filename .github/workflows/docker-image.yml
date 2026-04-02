@@ -24,3 +24,9 @@ jobs:
         echo "Iniciando Login"
         docker login -u $DOCKER_USER -p ${{SECRETS.DOCKER_PASSWORD}}
         echo "Finalizando Login"
+    - name: Build Docker Image
+      run: |
+        docker build -t sebratdocker/cron-ticker:graphql
+    - name: Push Docker Image
+      run: |
+        docker push sebratdocker/cron-ticker:graphql
