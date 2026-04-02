@@ -27,6 +27,8 @@ jobs:
     - name: Build Docker Image
       run: |
         docker build -t sebratdocker/cron-ticker:graphql .
+        docker build -t sebratdocker/cron-ticker:latest .
     - name: Push Docker Image
       run: |
         docker push sebratdocker/cron-ticker:graphql
+        docker push sebratdocker/cron-ticker:latest
