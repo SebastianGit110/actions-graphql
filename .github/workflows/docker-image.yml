@@ -26,9 +26,9 @@ jobs:
         echo "Finalizando Login"
     - name: Build Docker Image
       run: |
-        docker build -t sebratdocker/cron-ticker:graphql .
-        docker build -t sebratdocker/cron-ticker:latest .
+        docker build -t sebratdocker/cron-ticker:graphql2 .
     - name: Push Docker Image
       run: |
-        docker push sebratdocker/cron-ticker:graphql
+        docker push sebratdocker/cron-ticker:graphql2
+        docker image tag sebratdocker/cron-ticker:graphql2 sebratdocker/cron-ticker:latest
         docker push sebratdocker/cron-ticker:latest
